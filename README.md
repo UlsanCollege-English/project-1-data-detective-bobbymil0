@@ -1,94 +1,61 @@
-# \# P1: Data Detective
+# P1: Data Detective
 
-# 
+## Summary
 
-# \## Summary
+This project analyzes a text file, counts word frequencies, shows the top **N** words, and reports one extra insight. In this version, the extra insight is **lexical diversity** — the ratio of unique words to total words.
 
-# This project analyzes a text file, counts word frequencies, shows the top N words, and reports an extra insight.
+## Dataset
 
-# 
+- **File:** `data/sample.txt`
+- **Why I chose it:** I used a short sports-themed text because it is easy to verify by hand and includes repeated words, punctuation, and mixed sentence structure. That makes it a good small dataset for testing frequency analysis.
 
-# \## Dataset
+## How to run
 
-# File: sample.txt  
+```bash
+pytest -q
+python -m src.project
+```
 
-# Why I chose it: It is simple and useful for testing word frequency logic.
+## Approach
 
-# 
+1. Load text from a file.
+2. Normalize the text by converting it to lowercase.
+3. Tokenize the text into words using regular expressions.
+4. Count word frequencies with a dictionary.
+5. Sort and display the top N words.
+6. Report an extra insight: most frequent word, total words, unique words, and lexical diversity.
 
-# \## How to run
+## Complexity
 
-# python -m src.project
+### `count_words`
+- **Time:** `O(w)`
+- **Space:** `O(u)`
+- **Why:** The function visits each word once and stores one count per unique word.
 
-# 
+### `top_n_words`
+- **Time:** `O(u log u)`
+- **Space:** `O(u)`
+- **Why:** The unique-word dictionary is sorted by frequency, so the sort dominates the running time.
 
-# \## How to test
+## Edge-case checklist
 
-# pytest -q
+- [x] empty file
+- [x] punctuation-heavy input
+- [x] repeated words
+- [x] uppercase/lowercase differences
+- [x] `n <= 0`
 
-# 
+## Assistance & sources
 
-# \## Approach
+- **AI used?** Y
+- **What it helped with:** polishing the README, improving edge-case handling, and checking test coverage.
+- **Other sources:** Python documentation for `re` and `pathlib`.
 
-# \- Load text from a file  
+## Design note (150–250 words)
 
-# \- Normalize the text (lowercase, remove punctuation)  
+For this project, I selected a short football-themed text file as the dataset. I chose it because it is small enough to check manually, but still includes repeated vocabulary, punctuation, and natural sentence patterns that make frequency analysis meaningful. My main design decision was to keep the program simple and readable: one function loads the file, one tokenizes the text, one counts frequencies, and one returns the top N results. This makes the code easy to test and easy to improve later.
 
-# \- Split into words  
+The easiest part of the project was using a dictionary to store word counts, because that matches the problem directly and runs efficiently. The harder part was making the behavior reliable for edge cases such as empty files, capitalization differences, punctuation-heavy input, and invalid values like `n <= 0`. I also wanted the output to look clear when the program is run from the command line.
 
-# \- Count word frequencies using dictionary  
-
-# \- Sort and display top N words  
-
-# 
-
-# \## Complexity
-
-# 
-
-# \### count\_words
-
-# Time: O(n)  
-
-# Space: O(n)  
-
-# Why: We go through each word once  
-
-# 
-
-# \### top\_n\_words
-
-# Time: O(n log n)  
-
-# Space: O(n)  
-
-# Why: Sorting is required  
-
-# 
-
-# \## Edge-case checklist
-
-# \- empty file  
-
-# \- punctuation-heavy input  
-
-# \- repeated words  
-
-# \- uppercase/lowercase differences  
-
-# \- n <= 0  
-
-# 
-
-# \## Design note (150–250 words)
-
-# In this project, I used a simple text file as a dataset to analyze word frequencies. I designed the program to first normalize the text by converting all words to lowercase and removing punctuation, which helps ensure accurate counting. Then, I split the text into words and used a dictionary to count how many times each word appears.
-
-# 
-
-# The most straightforward part was counting word frequencies using a dictionary. The challenging part was handling edge cases like punctuation and ensuring the program works for empty input or invalid values of N. I also had to think about efficiency when sorting the words to find the top N most frequent ones.
-
-# 
-
-# If I had more time, I would improve the program by allowing users to input their own files and adding better visualization of results, such as charts or graphs.
+If I were improving the project next, I would let the user choose any text file from the command line and add a simple bar chart of the most frequent words for a more visual presentation.
 
