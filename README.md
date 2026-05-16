@@ -16,6 +16,24 @@ pytest -q
 python -m src.project
 ```
 
+Usage examples
+
+```bash
+# Run the unit tests
+pytest -q
+
+# Run the report using the bundled sample dataset (top 5 words)
+python -m src.project
+
+# Run the report showing the top 3 words for a specific file
+python -m src.project --file data/sample.txt --top 3
+```
+
+CLI flags
+
+- `--file` / `-f`: path to a text file to analyze (default: `data/sample.txt`)
+- `--top` / `-n`: number of top words to display (default: 5)
+
 ## Approach
 
 1. Load text from a file.
