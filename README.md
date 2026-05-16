@@ -1,5 +1,7 @@
 # P1: Data Detective
 
+![CI](https://github.com/UlsanCollege-English/project-1-data-detective-bobbymil0/actions/workflows/python-app.yml/badge.svg)
+
 ## Summary
 
 This project analyzes a text file, counts word frequencies, shows the top **N** words, and reports one extra insight. In this version, the extra insight is **lexical diversity** — the ratio of unique words to total words.
